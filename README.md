@@ -1,7 +1,9 @@
 # ansible-IIM_Install
 This ansible playbook will install IBM Installation manager. Works only on RedHat Machines. Tested on Centos 7
 
-Pre-Requisities: TODO
+Pre-Requisities: 
+
+Download the IBM Installation Manager Zip file and copy it to /tmp location
 
 
 Sample Output:
