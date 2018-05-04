@@ -1,0 +1,17 @@
+---
+- connection: local
+  hosts: "127.0.0.1"
+  tasks:
+   - name: Update Yum-Repo
+     yum: name=* update_cache=yes state=latest
+   - name: Install pre-requisites
+     yum: name={{item}} state=present
+     with_items:
+       - unzip
+       - java
+   - name: Create Directory
+     file: path=/tmp/IIM state=directory mode=0755
+   - name: Unzip IBM Installation Manager
+     unarchive: src=/tmp/IIM.zip dest=/tmp/IIM
+   - name: Install IBM Installation Manager
+     command: /tmp/IIM/install -acceptLicense --launcher.ini /tmp/IIM/silent-install.ini
